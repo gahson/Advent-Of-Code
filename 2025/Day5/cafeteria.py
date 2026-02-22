@@ -1,5 +1,4 @@
-def cafeteria(ranges, ids):
-    merged_ranges = find_max_range(ranges)
+def cafeteria(merged_ranges, ids):
     s = 0
     n = len(merged_ranges)
     
@@ -19,6 +18,12 @@ def cafeteria(ranges, ids):
             else:
                 low = mid + 1
                 
+    return s
+
+def cafeteria_2(merged_ranges):
+    s = 0
+    for r in merged_ranges:
+        s += r[1] - r[0] + 1
     return s
 
 def find_max_range(ranges):
@@ -50,5 +55,8 @@ with open("data5.txt", "r",  encoding="utf-8") as f:
     ranges = [list(map(int, r.split("-"))) for r in ranges]
     ids = list(map(int, ids.split("\n")))
 
+ranges = find_max_range(ranges)
+
 print(cafeteria(ranges, ids))
+print(cafeteria_2(ranges))
 
